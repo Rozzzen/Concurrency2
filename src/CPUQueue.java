@@ -14,6 +14,10 @@ public class CPUQueue {
         return queue.size();
     }
 
+    public boolean isEmplty() {
+        return queue.isEmpty();
+    }
+
     public synchronized void add(CPUProcess process) {
         if (queue == null || process == null) {
             throw new IllegalArgumentException();
@@ -27,7 +31,7 @@ public class CPUQueue {
 
     public synchronized CPUProcess remove() {
         if (queue == null || queue.isEmpty()) {
-            throw new IllegalArgumentException();
+            return null;
         }
         return queue.remove();
     }
