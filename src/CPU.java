@@ -3,7 +3,7 @@ public class CPU extends Thread{
     private final static long EXECUTION_TIME;
     private CPUProcess process;
     private boolean busy;
-    private volatile CPUQueue[] cpuQueues;
+    private static volatile CPUQueue[] cpuQueues;
 
     static {
         EXECUTION_TIME = 200;
