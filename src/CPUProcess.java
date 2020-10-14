@@ -3,7 +3,7 @@ public class CPUProcess extends Thread {
     private final long GENERATION_TIME;
 
     CPUProcess() {
-        GENERATION_TIME = 100;
+        GENERATION_TIME = (long)(Math.random() * 500);
     }
 
     @Override
@@ -11,6 +11,6 @@ public class CPUProcess extends Thread {
         try {
             Thread.sleep(GENERATION_TIME);
         } catch (InterruptedException ignored) {}
-        System.out.println("New Proccess generated: " + this);
+        System.out.println("New Proccess generated: " + this + "in " + GENERATION_TIME + " seconds");
     }
 }

@@ -5,7 +5,7 @@ public class CPU extends Thread{
     private static CPUQueue[] cpuQueues;
 
     static {
-        EXECUTION_TIME = 500;
+        EXECUTION_TIME = (long)(Math.random() * 500 + 500);
     }
 
     public CPU(CPUQueue[] cpuQueues) {
@@ -24,12 +24,12 @@ public class CPU extends Thread{
     }
 
     public boolean isBusy() {
-        return process == null;
+        return !(process == null);
     }
 
     @Override
     public void run() {
-        System.out.println("CPU: " + this + " started");
+        System.out.println("CPU: " + this + " started with execution time: " + EXECUTION_TIME);
         while (!Thread.interrupted()) {
             try {
                 if (process != null) {

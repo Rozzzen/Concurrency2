@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
 
     final static int NUMBER_OF_CPU = 2;
@@ -28,8 +26,12 @@ public class Main {
             cpuProcess[i] = new CPUProcess();
             cpuProcess[i].start();
             cpuProcess[i].join();
-            if(cpuQueue1.getSize() < cpuQueue2.getSize()) cpuQueue1.add(cpuProcess[i]);
-            else cpuQueue2.add(cpuProcess[i]);
+            if(!cpu[0].isBusy()) cpu[0].setProcess(cpuProcess[i]);
+            else if(!cpu[1].isBusy()) cpu[1].setProcess(cpuProcess[i]);
+            else {
+                if(cpuQueue1.getSize() < cpuQueue2.getSize()) cpuQueue1.add(cpuProcess[i]);
+                else cpuQueue2.add(cpuProcess[i]);
+            }
         }
     }
 }
