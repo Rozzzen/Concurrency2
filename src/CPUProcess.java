@@ -1,18 +1,9 @@
 public class CPUProcess extends Thread {
 
     private final long GENERATION_TIME;
-    private static int counter;
-    private final int PROCESS_ID;
-    private CPUQueue[] cpuQueues;
 
-    CPUProcess(CPUQueue []cpuQueues) {
-        PROCESS_ID = counter++;
+    CPUProcess() {
         GENERATION_TIME = 100;
-        this.cpuQueues = cpuQueues;
-    }
-
-    public int getProcessId() {
-        return PROCESS_ID;
     }
 
     @Override

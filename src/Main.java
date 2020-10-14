@@ -25,7 +25,7 @@ public class Main {
             cpu[i].start();
         }
         for (int i = 0; i < NUMBER_OF_PROCESS; i++) {
-            cpuProcess[i] = new CPUProcess(cpuQueue);
+            cpuProcess[i] = new CPUProcess();
             cpuProcess[i].start();
             cpuProcess[i].join();
             if(cpuQueue1.getSize() < cpuQueue2.getSize()) cpuQueue1.add(cpuProcess[i]);
