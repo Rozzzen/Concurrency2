@@ -24,7 +24,7 @@ public class CPU extends Thread{
     }
 
     public boolean isBusy() {
-        return !(process == null);
+        return process == null;
     }
 
     @Override
@@ -41,7 +41,10 @@ public class CPU extends Thread{
                 else {
                     requireProcess();
                 }
-            } catch (InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+                System.out.println("CPU: " + this + " has been terminated");
+                return;
+            }
         }
     }
 }
