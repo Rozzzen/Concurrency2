@@ -2,7 +2,7 @@ public class Main {
 
     final static int NUMBER_OF_CPU = 2;
     final static int NUMBER_OF_QUEUE = 2;
-    final static int NUMBER_OF_PROCESS = 25;
+    final static int NUMBER_OF_PROCESS = 24;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -33,9 +33,9 @@ public class Main {
                 else cpuQueue2.add(cpuProcess[i]);
             }
         }
-        while(cpu[0].isAlive() || cpu[1].isAlive()) {
-            if(cpu[0].isBusy()) cpu[0].interrupt();
-            if(cpu[1].isBusy()) cpu[1].interrupt();
+        while((cpu[0].isAlive() || cpu[1].isAlive())) {
+            if(!cpu[0].isBusy() && (cpuQueue1.isEmplty() && cpuQueue2.isEmplty())) cpu[0].stopThread();
+            if(!cpu[1].isBusy() && (cpuQueue1.isEmplty() && cpuQueue2.isEmplty())) cpu[1].stopThread();
         }
     }
 }

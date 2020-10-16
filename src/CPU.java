@@ -3,9 +3,14 @@ public class CPU extends Thread{
     private final static long EXECUTION_TIME;
     private CPUProcess process;
     private static CPUQueue[] cpuQueues;
+    private boolean run = true;
 
     static {
-        EXECUTION_TIME = (long)(Math.random() * 500 + 500);
+        EXECUTION_TIME = (long)(Math.random() * 500 + 700);
+    }
+
+    public void stopThread() {
+        run = false;
     }
 
     public CPU(CPUQueue[] cpuQueues) {
@@ -30,7 +35,7 @@ public class CPU extends Thread{
     @Override
     public void run() {
         System.out.println("CPU: " + this + " started with execution time: " + EXECUTION_TIME);
-        while (!Thread.interrupted()) {
+        while (!Thread.interrupted() && run) {
             try {
                 if (process != null) {
                     System.out.println(this + " started processing of:" + process);
@@ -42,9 +47,10 @@ public class CPU extends Thread{
                     requireProcess();
                 }
             } catch (InterruptedException ignored) {
-                System.out.println("CPU: " + this + " has been terminated");
+                System.out.println("An unexpected error occured");
                 return;
             }
         }
+        System.out.println("CPU: " + this + " has been terminated");
     }
 }
