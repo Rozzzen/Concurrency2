@@ -3,11 +3,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CPUQueue {
 
-    private Queue<CPUProcess>queue;
+    private final Queue<CPUProcess>queue;
     private final int MAX_SIZE = 25;
 
     CPUQueue() {
         queue = new ConcurrentLinkedQueue<>();
+    }
+
+    public Queue<CPUProcess> getQueue() {
+        return queue;
     }
 
     public int getSize() {
