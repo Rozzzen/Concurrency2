@@ -24,7 +24,6 @@ public class CPUQueue {
         }
         if (queue.size() > MAX_SIZE) {
             System.out.println("Queue overflow");
-            //terminate process
         }
         queue.add(process);
     }
