@@ -39,11 +39,11 @@ public class CPUProcessFlow extends Thread {
             }
             else if(id == 0) { //perviy potok
                 if(cpu[0].isFree()) cpu[0].setProcess(cpuProcess[id][i]);
+                else if(cpu[1].isFree()) cpu[1].setProcess(cpuProcess[id][i]);
                 else if(cpu[0].getProcess().getGeneratedBy() == 1) {
                     cpu[0].interrupt();
                     Constant.INTERRUPTED_PROCESSES++;
                 }
-                else if(cpu[1].isFree()) cpu[1].setProcess(cpuProcess[id][i]);
                 else {
                     System.out.println("Process " + cpuProcess[id][i] + " has been deleted");
                     cpuProcess[id][i] = null;

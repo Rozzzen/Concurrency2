@@ -23,8 +23,8 @@ public class Main {
             if(!cpu[1].isFree() && cpuQueue.isEmplty()) cpu[1].stopThread();
         }
         System.out.println("----------------------------------------------------------------");
-        System.out.println("Processes deleted: " + Constant.DELETED_PROCESSES);
-        System.out.println("Processes interrupted: " + Constant.INTERRUPTED_PROCESSES);
+        System.out.println("Processes deleted: " + (double)Constant.DELETED_PROCESSES / Constant.NUMBER_OF_PROCESS * 100 + "%");
+        System.out.println("Processes interrupted: " + (double)Constant.INTERRUPTED_PROCESSES / Constant.NUMBER_OF_PROCESS * 100 + "%");
         System.out.println("Max queue length: " + Constant.MAX_LENGTH);
     }
 }
